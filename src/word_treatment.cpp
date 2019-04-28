@@ -1,6 +1,6 @@
 #include "word_treatment.h"
 
-std::vector <std::string> split(std::string& phrase, std::string separator) {
+List <std::string> split(const std::string& phrase, const std::string separator) {
 
 }
 
