@@ -1,15 +1,22 @@
 #include <iostream>
 #include <fstream>
+#include <dirent.h>
+#include <string>
 
 #include "word_treatment.h"
 #include "Vocabulary.h"
 #include "List.h"
 
 using namespace std;
+#define Define_CurrentDir _getcwd
+
+//Organiza em uma lista, todos os arquivos do diretorio database
+string requisitaArquivos();
 
 int main() {
     Vocabulary vocabulary;
 
+    
     // Implementar função para identificar arquivos no database
     List <string> file_list;
     file_list.append("../database/d1.txt");
@@ -44,7 +51,33 @@ int main() {
         query_vocabulary.insert(query_words[i], "");
     }
 
-    
-
     return 0;
+}
+
+//Vai retornar uma lista, precisamos implementar o TAD
+string requisitaArquivos(){
+
+    DIR *diretorio;
+    struct dirent *lsdir;
+    string arquivo, arquivoSelecionado, line;
+    int tamanho, contador=0;
+
+    diretorio = opendir("../database/");
+
+    /* Mostra todos arquivos txt no diretorio */
+    while ( ( lsdir = readdir(diretorio) ) != NULL )
+    {
+        arquivo = lsdir->d_name;
+        tamanho = arquivo.length();
+        if( arquivo[tamanho-3]=='t' && arquivo[tamanho-2]=='x' && arquivo[tamanho-1]=='t'){
+            contador++;
+            cout << contador << " - " << lsdir->d_name <<endl;
+        }
+        
+    }
+
+    closedir(diretorio);
+
+    //Retorna uma lista
+    return arquivoSelecionado;
 }
