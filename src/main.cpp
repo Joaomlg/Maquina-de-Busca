@@ -8,7 +8,6 @@
 #include "List.h"
 
 using namespace std;
-#define Define_CurrentDir _getcwd
 
 //Organiza em uma lista, todos os arquivos do diretorio database
 string requisitaArquivos();
