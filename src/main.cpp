@@ -2,17 +2,17 @@
 #include <fstream>
 #include <dirent.h>
 #include <string>
-
+/*
 #include "word_treatment.h"
 #include "Vocabulary.h"
 #include "List.h"
+*/
+#include "list_database.h"
 
 using namespace std;
 
-//Organiza em uma lista, todos os arquivos do diretorio database
-string requisitaArquivos();
-
 int main() {
+    /*
     Vocabulary vocabulary;
 
     
@@ -49,34 +49,9 @@ int main() {
         treat(query_words[i]);
         query_vocabulary.insert(query_words[i], "");
     }
+    */
+
+   requestArchievs();
 
     return 0;
-}
-
-//Vai retornar uma lista, precisamos implementar o TAD
-string requisitaArquivos(){
-
-    DIR *diretorio;
-    struct dirent *lsdir;
-    string arquivo, arquivoSelecionado, line;
-    int tamanho, contador=0;
-
-    diretorio = opendir("../database/");
-
-    /* Mostra todos arquivos txt no diretorio */
-    while ( ( lsdir = readdir(diretorio) ) != NULL )
-    {
-        arquivo = lsdir->d_name;
-        tamanho = arquivo.length();
-        if( arquivo[tamanho-3]=='t' && arquivo[tamanho-2]=='x' && arquivo[tamanho-1]=='t'){
-            contador++;
-            cout << contador << " - " << lsdir->d_name <<endl;
-        }
-        
-    }
-
-    closedir(diretorio);
-
-    //Retorna uma lista
-    return arquivoSelecionado;
 }
