@@ -36,7 +36,7 @@ class List {
         bool operator==(const List& x) const;
 
         // Faz com que *this tenha os mesmos elementos de x
-        void operator=(const File& x) const;
+        void operator=(const List& x) const;
 
         // Retorna elemento contido no respectivo indice
         type& operator[](const int index);
