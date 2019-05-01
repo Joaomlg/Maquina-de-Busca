@@ -2,20 +2,18 @@
 #include <fstream>
 #include <dirent.h>
 #include <string>
-/*
+
 #include "word_treatment.h"
 #include "Vocabulary.h"
 #include "List.h"
-*/
+
 #include "list_database.h"
 
 using namespace std;
 
 int main() {
-    /*
     Vocabulary vocabulary;
 
-    
     // Implementar função para identificar arquivos no database
     List <string> file_list;
     file_list.append("../database/d1.txt");
@@ -49,9 +47,6 @@ int main() {
         treat(query_words[i]);
         query_vocabulary.insert(query_words[i], "");
     }
-    */
-
-   requestArchievs();
 
     return 0;
 }
