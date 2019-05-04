@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 
-#include "set.h"
+#include "multiset.h"
 
 class Vocabulary {
     private:
