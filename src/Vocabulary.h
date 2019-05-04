@@ -8,7 +8,7 @@
 
 class Vocabulary {
     private:
-        map <string, Set<std::string>> dict;
+        map <string, Multiset<std::string>> dict;
 
     public:
         // Cria vocabulario vazio

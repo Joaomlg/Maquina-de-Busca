@@ -1,7 +1,7 @@
 #include "word_treatment.h"
 
-List <std::string> split(const std::string& phrase, const std::string separator) {
-    List <std::string> list;
+std::vector <std::string> split(const std::string& phrase, const std::string separator) {
+    std::vector <std::string> list;
     std::string aux = "";
     for(int i = 0; i < phrase.length(); i++) {
         std::string c = std::string(1, phrase[i]);
@@ -10,7 +10,7 @@ List <std::string> split(const std::string& phrase, const std::string separator)
             if(i != phrase.length() -1)
                 continue;
         }
-        list.append(aux);
+        list.push_back(aux);
         aux.clear();
     }
     return list;

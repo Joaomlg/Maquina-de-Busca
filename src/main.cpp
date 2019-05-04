@@ -2,10 +2,10 @@
 #include <fstream>
 #include <dirent.h>
 #include <string>
+#include <vector>
 
 #include "word_treatment.h"
 #include "Vocabulary.h"
-#include "List.h"
 #include "list_database.h"
 
 using namespace std;
@@ -14,10 +14,7 @@ int main() {
     Vocabulary vocabulary;
 
     // Implementar função para identificar arquivos no database
-    List <string> file_list;
-    file_list.append("../database/d1.txt");
-    file_list.append("../database/d2.txt");
-    file_list.append("../database/d3.txt");
+    vector <string> file_list = {"../database/d1.txt", "../database/d2.txt", "../database/d3.txt"};
 
     for(int i=0; i<file_list.size(); i++) {
         ifstream file(file_list[i]);
@@ -41,7 +38,7 @@ int main() {
     cout << "O que deseja pesquisar?\n> ";
     cin >> query;
 
-    List <string> query_words = split(query, " ");
+    vector <string> query_words = split(query, " ");
     for(int i=0; i<query_words.size(); i++) {
         treat(query_words[i]);
         query_vocabulary.insert(query_words[i], "");

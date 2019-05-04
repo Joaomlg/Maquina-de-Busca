@@ -2,15 +2,11 @@
 #include "../include/doctest.h"
 
 #include "../src/word_treatment.h"
-#include "../src/List.h"
 
 using namespace std;
 
 TEST_CASE("split") {
-    List <string> expected;
-    expected.append("teste");
-    expected.append("123");
-    expected.append("456");
+    vector <string> expected = {"teste", "123", "456"};
     CHECK(split("teste 123 456", " ") == expected);
 }
 
