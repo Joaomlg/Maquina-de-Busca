@@ -1,4 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#define _GLIBCXX_USE_CXX11_ABI 0
+
 #include "../include/doctest.h"
 
 #include "../src/list_database.h"
