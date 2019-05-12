@@ -6,15 +6,16 @@
 
 using namespace std;
 
-vector <string> requestArchievs(){
+vector <string> requestArchievs(string pasta){
 
     DIR *diretorio;
     struct dirent *lsdir;
-    string arquivo, line;
+    string arquivo, line, caminho;
     int tamanho, contador=0;
     vector <string> arquivos;
 
-    diretorio = opendir("../database/");
+    caminho = "../"+pasta+"/";
+    diretorio = opendir(caminho.c_str());
 
     while ( ( lsdir = readdir(diretorio) ) != NULL )
     {
