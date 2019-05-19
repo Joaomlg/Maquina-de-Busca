@@ -11,10 +11,16 @@
 using namespace std;
 
 int main() {
-    Vocabulary vocabulary;
 
-    // Implementar função para identificar arquivos no database
-    vector <string> file_list = {"../database/d1.txt", "../database/d2.txt", "../database/d3.txt"};
+    /*
+    ###########################################################################################
+    ##################################### BANCO DE DADOS ######################################
+    ###########################################################################################
+    */
+
+    vector <string> file_list = requestArchievs("database");
+
+    Vocabulary inverted_index;
 
     for(int i=0; i<file_list.size(); i++) {
         ifstream file(file_list[i]);
@@ -22,7 +28,7 @@ int main() {
             string word;
             while(file >> word) {
                 treat(word);
-                vocabulary.insert(word, file_list[i]);
+                inverted_index.insert(word, file_list[i]);
             }
             file.close();
         } else {
@@ -31,7 +37,18 @@ int main() {
         }
     }
 
-    // =============================================================================================
+    /*
+    ###########################################################################################
+    ############################# GERAR COORDENADAS PARA CADA PALAVRA #########################
+    ###########################################################################################
+    */
+    
+
+    /*
+    ###########################################################################################
+    ##################################### ENTRADA DO USUARIO ##################################
+    ###########################################################################################
+    */
     Vocabulary query_vocabulary;
 
     string query;

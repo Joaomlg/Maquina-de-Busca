@@ -7,8 +7,7 @@
 
 using namespace std;
 
-
-TEST_CASE("requestArchievs") {
+TEST_CASE("requestArchievs()") {
     vector <string> expected = {"baseTeste1.txt", "baseTeste2.txt", "baseTeste3.txt"};
     string pasta = "teste/database";
     CHECK(requestArchievs(pasta) == expected);
