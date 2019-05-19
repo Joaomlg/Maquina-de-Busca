@@ -1,5 +1,4 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#define _GLIBCXX_USE_CXX11_ABI 0
 
 #include "../include/doctest.h"
 
@@ -8,7 +7,15 @@
 using namespace std;
 
 TEST_CASE("requestArchievs()") {
+    string pasta = "tests/database";
     vector <string> expected = {"baseTeste1.txt", "baseTeste2.txt", "baseTeste3.txt"};
-    string pasta = "teste/database";
-    CHECK(requestArchievs(pasta) == expected);
+    int checar=0;
+    vector <string> received = requestArchievs(pasta);
+    for(int i=0; i<expected.size(); i++){
+        for(int j=0; j<received.size(); j++){
+            if(expected[i]==received[j])
+                checar++;
+        }    
+    }
+    CHECK(checar==expected.size());
 }
