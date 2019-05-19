@@ -21,10 +21,8 @@ vector <string> requestArchievs(string pasta){
     {
         arquivo = lsdir->d_name;
         tamanho = arquivo.length();
-        if( arquivo[tamanho-3]=='t' && arquivo[tamanho-2]=='x' && arquivo[tamanho-1]=='t'){
-            contador++;
-            arquivos.push_back(lsdir->d_name);
-        }
+        contador++;
+        arquivos.push_back(lsdir->d_name);
         
     }
 
