@@ -6,14 +6,12 @@ float similiaridade(Vetor doc, Vetor query){
     return sim;
 }
 
-void inserir(map <string,float> docs_simi, string document, float sim){
-    docs_simi.insert(pair<string, float>(document, sim));
-}
-
 list <string> order(map<string, float> docs_simi){
     list <string> ordernado;
-    map <string, float>::interator it;
-    for(it=docs_simi.begin(); it!=docs_simi.end(); i++){
+    map <float, vector<string>> simi_docs;
+    map <string, float>::iterator it_sd;
+    map <string, float>::iterator it_ds;
+    for(it_ds=docs_simi.begin(); it_ds!=docs_simi.end(); it_ds++){
         
     }
 }
