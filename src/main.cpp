@@ -55,8 +55,8 @@ int main() {
             string word;
             while(file >> word) {
                 treat(word);
-                value = inveted_index.tf(word,document)*inverted_index.idf(word);
-                words_coord(word, value);
+                value = inverted_index.tf(word,file_list[i])*inverted_index.idf(word);
+                words_coord.insert_coord(word, value);
             }
             docs_weight[file_list[i]]=words_coord;
             file.close();
@@ -91,9 +91,9 @@ int main() {
     Vetor vector_query;
     for(string word_query:query_words){
         value = query_vocabulary.tf(word_query,"")*query_vocabulary.idf(word_query);
-        vector_query[word_query] = value;
+        vector_query.insert_coord(word_query,value);
     }
 
-    
+
     return 0;
 }

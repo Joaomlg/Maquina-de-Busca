@@ -1,5 +1,5 @@
-#ifndef VOCABULARY_H
-#define VOCABULARY_H
+#ifndef VETOR_H
+#define VETOR_H
 
 #include <map>
 #include <string>
