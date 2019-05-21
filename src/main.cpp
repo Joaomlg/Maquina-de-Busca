@@ -3,6 +3,7 @@
 #include <dirent.h>
 #include <string>
 #include <vector>
+#include <cmath>
 
 #include "word_treatment.h"
 #include "Vocabulary.h"
@@ -54,7 +55,7 @@ int main() {
             string word;
             while(file >> word) {
                 treat(word);
-                value = inveted_index(word,document)*inverted_index(word);
+                value = inveted_index.tf(word,document)*inverted_index.idf(word);
                 words_coord(word, value);
             }
             docs_weight[file_list[i]]=words_coord;
@@ -85,6 +86,14 @@ int main() {
     ##################################### RANKEAR DOCUMENTOS ##################################
     ###########################################################################################
     */
+    
+    //gerar coordenada da entrada
+    Vetor vector_query;
+    for(string word_query:query_words){
+        value = query_vocabulary.tf(word_query,"")*query_vocabulary.idf(word_query);
+        vector_query[word_query] = value;
+    }
 
+    
     return 0;
 }
