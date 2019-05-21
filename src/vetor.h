@@ -12,14 +12,14 @@ class Vetor
         // word, weight
 		map<string, float> element;
 	public:
-		//Instancia a classe
+		//Instancia a classe com um map vazio
         Vetor();  
 
         //Insere uma nova palavra com valor da sua coordenada
 		void insert_coord(string word, float value);
 		
         //Produto escalar entre dois velores
-		float operator*(); 
+		float operator*(Vetor x); 
 
         //Modulo do vetor
 		float module();  
