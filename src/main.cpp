@@ -7,6 +7,7 @@
 #include "word_treatment.h"
 #include "Vocabulary.h"
 #include "list_database.h"
+#include "vetor.h"
 
 using namespace std;
 
@@ -39,10 +40,27 @@ int main() {
 
     /*
     ###########################################################################################
-    ############################# GERAR COORDENADAS PARA CADA PALAVRA #########################
+    ############################# GERAR COORDENADAS PARA DOC * PALAVRA ########################
     ###########################################################################################
     */
+
+    Vetor words_coord;
+    map <string, Vetor> docs_weight;
+    float value;
     
+    for(int i=0; i<file_list.size(); i++) {
+        ifstream file(file_list[i]);
+        if(file.is_open()) {
+            string word;
+            while(file >> word) {
+                treat(word);
+                value = inveted_index(word,document)*inverted_index(word);
+                words_coord(word, value);
+            }
+            docs_weight[file_list[i]]=words_coord;
+            file.close();
+        }
+    }
 
     /*
     ###########################################################################################
@@ -61,6 +79,12 @@ int main() {
         treat(query_words[i]);
         query_vocabulary.insert(query_words[i], "");
     }
+
+    /*
+    ###########################################################################################
+    ##################################### RANKEAR DOCUMENTOS ##################################
+    ###########################################################################################
+    */
 
     return 0;
 }
