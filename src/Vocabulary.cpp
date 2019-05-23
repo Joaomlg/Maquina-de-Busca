@@ -2,15 +2,16 @@
 #include <map>
 #include <cmath>
 
+#include "Vocabulary.h"
 #include "multiset.h"
 
-Vocabulary::Vocabulary () {
+Vocabulary :: Vocabulary () {
     map <string, Multiset <std::string>> dict;
     int number_doc = 0;
 }
 
 bool Vocabulary :: contains (string word){
-    return (dict.find("word"))
+    return (dict.find("word"));
 }
 
 void Vocabulary :: insert (string word, string doc) {
