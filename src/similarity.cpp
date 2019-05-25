@@ -1,8 +1,10 @@
 #include "similarity.h"
 
 float similiaridade(Vetor doc, Vetor query){
-    float sim;
-    sim = (doc*query)/(doc.module()*query.module());
+    float sim, modD, modQ;
+    modD = doc.module();
+    modQ = query.module();
+    sim = (doc*query)/(modD*modQ);
     return sim;
 }
 
