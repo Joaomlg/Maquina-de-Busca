@@ -17,7 +17,7 @@ float Vetor::operator*(Vetor x){
     for(primeiro = this->element.begin(); primeiro!=this->element.end(); primeiro++){
         for(segundo = x.element.begin(); segundo!=x.element.end(); segundo++){
             if(primeiro->first==segundo->first){
-                escalar += primeiro->second*segundo->second;
+                escalar = escalar + primeiro->second*segundo->second;
             }
         }
     }
