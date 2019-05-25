@@ -9,10 +9,11 @@
 class Vocabulary {
     private:
         map <string, Multiset<std::string>> dict;
+        int ndoc;
 
     public:
         // Cria vocabulario vazio
-        Vocabulary();
+        Vocabulary(int n_doc);
 
         // Testa se palavra esta contida no vocabulario
         bool contains(string word);
