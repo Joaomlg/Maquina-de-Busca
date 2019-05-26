@@ -30,11 +30,5 @@ float Vetor::operator*(Vetor x){
 }
 
 float Vetor::module(){
-    // float modulo;
-    // map <string, float> ::iterator it;
-    // for(it = this->element.begin(); it!=this->element.end(); it++){
-    //     modulo = modulo + it->second*it->second;
-    // }
-    // modulo = sqrt(somatorio);
     return modulo;
 }
