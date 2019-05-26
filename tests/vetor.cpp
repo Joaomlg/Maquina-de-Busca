@@ -8,8 +8,8 @@ using namespace std;
 
 TEST_SUITE("Vetor") {
     TEST_CASE("module()") {
-        Vetor vet;
-        float mod1 = 0.6, mod2 = 1;
+        Vetor vet, vet2;
+        float mod1 = 0.6, mod2 = 1, mod3=7;
         vet.insert_coord("ola",0.4);
         vet.insert_coord("google", 0.2);
         vet.insert_coord("documento", 0.4);
@@ -19,6 +19,13 @@ TEST_SUITE("Vetor") {
         vet.insert_coord("palavra", 0.8);
 
         CHECK(vet.module()==mod2);
+
+        vet2.insert_coord("legal",4);
+        vet2.insert_coord("bacana",5);
+        vet2.insert_coord("testando",2);
+        vet2.insert_coord("isso",2);
+
+        CHECK(vet2.module()==mod3);
     }
 
     TEST_CASE("operator*(Vetor x)"){

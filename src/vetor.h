@@ -11,6 +11,8 @@ class Vetor
     private:
         // word, weight
 		map<string, float> element;
+        float modulo;
+        float somatorio;
 	public:
 		//Instancia a classe com um map vazio
         Vetor();  

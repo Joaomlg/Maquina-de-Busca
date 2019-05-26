@@ -1,11 +1,7 @@
 #include "similarity.h"
 
 float similiaridade(Vetor doc, Vetor query){
-    float sim, modD, modQ;
-    modD = doc.module();
-    modQ = query.module();
-    sim = (doc*query)/(modD*modQ);
-    return sim;
+    return (doc*query)/(doc.module()*query.module());
 }
 
 list <string> order(map<string, float> docs_simi){
