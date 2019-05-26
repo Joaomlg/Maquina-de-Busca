@@ -10,13 +10,14 @@
 #include "list_database.h"
 #include "vetor.h"
 
+#define DOC_QUERY ""
+
 using namespace std;
 
 int main() {
-
     vector <string> file_list = requestArchievs("database");
 
-    Vocabulary inverted_index;
+    Vocabulary vocabulary(file_list.size());
 
     for(int i=0; i<file_list.size(); i++) {
         ifstream file(file_list[i]);
@@ -24,7 +25,7 @@ int main() {
             string word;
             while(file >> word) {
                 treat(word);
-                inverted_index.insert(word, file_list[i]);
+                vocabulary.insert(word, file_list[i]);
             }
             file.close();
         } else {
@@ -43,7 +44,7 @@ int main() {
             string word;
             while(file >> word) {
                 treat(word);
-                value = inverted_index.tf(word,file_list[i])*inverted_index.idf(word);
+                value = vocabulary.tf(word,file_list[i])*vocabulary.idf(word);
                 words_coord.insert_coord(word, value);
             }
             docs_weight[file_list[i]]=words_coord;
@@ -51,21 +52,22 @@ int main() {
         }
     }
 
-    Vocabulary query_vocabulary;
-
     string query;
     cout << "O que deseja pesquisar?\n> ";
     cin >> query;
 
     vector <string> query_words = split(query, " ");
+
+    Vocabulary query_vocabulary(query_words.size());
+
     for(int i=0; i<query_words.size(); i++) {
         treat(query_words[i]);
-        query_vocabulary.insert(query_words[i], "");
+        query_vocabulary.insert(query_words[i], DOC_QUERY);
     }
 
     Vetor vector_query;
     for(string word_query:query_words){
-        value = query_vocabulary.tf(word_query,"")*query_vocabulary.idf(word_query);
+        value = query_vocabulary.tf(word_query, DOC_QUERY)*query_vocabulary.idf(word_query);
         vector_query.insert_coord(word_query,value);
     }
 
