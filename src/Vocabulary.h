@@ -6,6 +6,8 @@
 
 #include "multiset.h"
 
+using namespace std;
+
 class Vocabulary {
     private:
         map <string, Multiset<std::string>> dict;
