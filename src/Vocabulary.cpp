@@ -11,7 +11,10 @@ Vocabulary :: Vocabulary () {
 }
 
 bool Vocabulary :: contains (string word){
-    return (dict.find("word"));
+    for (map<string, Multiset<string>>::iterator it=dict.begin(); it!=dict.end(); ++it){
+        if(it->first == "word") return 1;
+        else return 0;
+    }
 }
 
 void Vocabulary :: insert (string word, string doc) {
