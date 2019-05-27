@@ -10,8 +10,8 @@ using namespace std;
 
 class Vocabulary {
     private:
-        map <string, Multiset<std::string>> dict;
-        int ndoc;
+        map <string, my_multiset <std::string>> dict;
+        int n_doc;
 
     public:
         // Cria vocabulario vazio

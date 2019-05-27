@@ -5,9 +5,9 @@
 #include "Vocabulary.h"
 #include "multiset.h"
 
-Vocabulary :: Vocabulary () {
-    map <string, Multiset <std::string>> dict;
-    int number_doc = 0;
+Vocabulary :: Vocabulary (int n_doc) {
+    map <string, my_multiset <std::string>> dict;
+    int n_doc = 0;
 }
 
 bool Vocabulary :: contains (string word){
@@ -18,7 +18,7 @@ bool Vocabulary :: contains (string word){
 }
 
 void Vocabulary :: insert (string word, string doc) {
-        dict["word"] = Multiset.insert("doc");
+        dict["word"] = my_multiset.insert("doc");
 }
 
 void Vocabulary :: remove (string word) {
@@ -33,12 +33,9 @@ float Vocabulary :: tf (string word, string doc){
 
 float Vocabulary :: idf (string word) {
     float count_words = dict["word"].count_different();
-    return log(number_doc/count_words);
+    return log(n_doc/count_words);
 }
 
 Vocabulary :: ~Vocabulary() {
    delete dict;
 }
-
-};
-
