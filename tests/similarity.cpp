@@ -8,28 +8,27 @@ using namespace std;
 
 TEST_CASE("similiaridade(Vetor doc, Vetor query)") {
     Vetor doc, query;
-    float sim, expected, histerese=0.0001, vsf, tnc, result;
+    float sim, expected=0.571428571;
 
-    expected = ((0.2*0.2)+(0.2*0.2)+(0.2*0.2))/(sqrt((0.2*0.2)+(0.2*0.2)+
-    (0.2*0.2)+(0.5*0.5)+(0.2*0.2))*sqrt((0.2*0.2)+(0.2*0.2)+(0.2*0.2)+(0.9*0.9)+(0.8*0.8)));
+    doc.insert_coord("ola",  4);
+    doc.insert_coord("meu",  5);
+    doc.insert_coord("nome", 2);
+    doc.insert_coord("jason",2);
 
-    doc.insert_coord("ola",  0.2);
-    doc.insert_coord("meu",  0.2);
-    doc.insert_coord("nome", 0.2);
-    doc.insert_coord("e",    0.5);
-    doc.insert_coord("jason",0.2);
-
-    query.insert_coord("ola",   0.2);
-    query.insert_coord("mi",    0.9);
-    query.insert_coord("nome",  0.2);
-    query.insert_coord("es",    0.8);
-    query.insert_coord("jason", 0.2);
+    query.insert_coord("ola",   4);
+    query.insert_coord("mi",    4);
+    query.insert_coord("nome",  4);
+    query.insert_coord("jason", 4);
     
     sim = similiaridade(doc, query);
-
-    CHECK(sim>=(expected-histerese));
-    CHECK(sim<=(expected+histerese));
-
+     
+    CHECK(doc.module()==7.0);
+    CHECK(query.module()==8.0);
+    CHECK((doc.module()*query.module())==56.0);
+    CHECK((doc*query)==32.0);
+    CHECK(((doc*query)/(doc.module()*query.module()))==expected);
+    
+    CHECK(sim==expected);
 }
 
 TEST_CASE("order(map<string, float> docs_simi)") {
