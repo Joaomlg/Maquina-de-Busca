@@ -4,7 +4,7 @@
 #include <set>
 
 template <class type>
-class Multiset : public std::multiset<type> {
+class my_multiset : public std::multiset<type> {
     public:
         // Retorna numero de elementos diferentes no conjunto
         int count_different() const {
