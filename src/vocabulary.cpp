@@ -1,4 +1,4 @@
-#include "Vocabulary.h"
+#include "vocabulary.h"
 #include "multiset.h"
 
 Vocabulary::Vocabulary (int ndoc) {
@@ -38,5 +38,5 @@ float Vocabulary::idf (string word) {
 }
 
 Vocabulary::~Vocabulary() {
-   
+    dict.clear();
 }
