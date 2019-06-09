@@ -5,9 +5,9 @@
 
 using namespace std;
 
-TEST_SUITE("Multiset") {
+TEST_SUITE("my_multiset") {
     TEST_CASE("count_different()") {
-        Multiset<int> x;
+        my_multiset<int> x;
         x.insert(1); x.insert(1); x.insert(1);
         x.insert(2); x.insert(2);
         x.insert(3);
