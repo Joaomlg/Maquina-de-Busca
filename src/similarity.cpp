@@ -1,5 +1,5 @@
 #include "similarity.h"
-
+ 
 float similiaridade(Vetor doc, Vetor query){
     return (doc*query)/(doc.module()*query.module());
 }

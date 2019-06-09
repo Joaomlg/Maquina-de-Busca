@@ -21,7 +21,7 @@ TEST_CASE("similiaridade(Vetor doc, Vetor query)") {
     query.insert_coord("jason", 4);
     
     sim = similiaridade(doc, query);
-     
+    
     CHECK(doc.module()==7.0);
     CHECK(query.module()==8.0);
     CHECK((doc.module()*query.module())==56.0);
