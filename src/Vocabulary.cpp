@@ -5,13 +5,13 @@
 #include "Vocabulary.h"
 #include "multiset.h"
 
-Vocabulary :: Vocabulary (int n_doc) {
+Vocabulary :: Vocabulary (int ndoc) {
     map <string, my_multiset <std::string>> dict;
-    int n_doc = 0;
+    this->n_doc = ndoc;
 }
 
 bool Vocabulary :: contains (string word){
-    for (map<string, Multiset<string>>::iterator it=dict.begin(); it!=dict.end(); ++it){
+    for (map<string, my_multiset<string>>::iterator it=dict.begin(); it!=dict.end(); ++it){
         if(it->first == word) return true;
         else return false;
     }
@@ -19,16 +19,16 @@ bool Vocabulary :: contains (string word){
 
 void Vocabulary :: insert (string word, string doc) {
     if (contains(word))
-        dict[word] = my_multiset.insert(doc);
+        dict[word].insert(doc);
     else {
         dict[word] = new my_multiset;
-        dict[word] = my_multiset.insert(doc);
+        dict[word].insert(doc);
     }
     
 }
 
 void Vocabulary :: remove (string word) {
-    map <string, Multiset <std::string>> :: iterator it;
+    map <string, my_multiset<std::string>> :: iterator it;
     it = dict.find(word);
     dict.erase(it);
 }
