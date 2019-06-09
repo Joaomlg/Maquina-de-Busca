@@ -10,12 +10,11 @@ vector <string> requestArchievs(string pasta){
 
     DIR *diretorio;
     struct dirent *lsdir;
-    string arquivo, line, caminho;
+    string arquivo, line;
     int tamanho, contador=0;
     vector <string> arquivos;
 
-    caminho = "../"+pasta+"/";
-    diretorio = opendir(caminho.c_str());
+    diretorio = opendir(pasta.c_str());
 
     while ( ( lsdir = readdir(diretorio) ) != NULL )
     {
