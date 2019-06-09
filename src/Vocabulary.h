@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <cmath>
 
 #include "multiset.h"
 
@@ -35,6 +36,7 @@ class Vocabulary {
         //
         ~Vocabulary();
 
+        friend class Teste;
 };
 
 #endif
