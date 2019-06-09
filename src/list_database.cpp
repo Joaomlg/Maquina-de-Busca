@@ -22,8 +22,6 @@ vector <string> requestArchievs(string path){
             }
         }
     }
-
     closedir(dir);
-
     return files;
 }
