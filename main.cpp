@@ -1,14 +1,12 @@
 #include <iostream>
 #include <fstream>
-#include <dirent.h>
 #include <string>
 #include <vector>
-#include <cmath>
 
-#include "word_treatment.h"
-#include "Vocabulary.h"
-#include "list_database.h"
-#include "vetor.h"
+#include "src/word_treatment.h"
+#include "src/vocabulary.h"
+#include "src/list_database.h"
+// #include "src/vetor.h"
 
 #define DOC_QUERY ""
 
@@ -34,23 +32,23 @@ int main() {
         }
     }
 
-    Vetor words_coord;
-    map <string, Vetor> docs_weight;
-    float value;
+    // Vetor words_coord;
+    // map <string, Vetor> docs_weight;
+    // float value;
     
-    for(int i=0; i<file_list.size(); i++) {
-        ifstream file(file_list[i]);
-        if(file.is_open()) {
-            string word;
-            while(file >> word) {
-                treat(word);
-                value = vocabulary.tf(word,file_list[i])*vocabulary.idf(word);
-                words_coord.insert_coord(word, value);
-            }
-            docs_weight[file_list[i]]=words_coord;
-            file.close();
-        }
-    }
+    // for(int i=0; i<file_list.size(); i++) {
+    //     ifstream file(file_list[i]);
+    //     if(file.is_open()) {
+    //         string word;
+    //         while(file >> word) {
+    //             treat(word);
+    //             value = vocabulary.tf(word,file_list[i])*vocabulary.idf(word);
+    //             words_coord.insert_coord(word, value);
+    //         }
+    //         docs_weight[file_list[i]]=words_coord;
+    //         file.close();
+    //     }
+    // }
 
     string query;
     cout << "O que deseja pesquisar?\n> ";
@@ -65,11 +63,11 @@ int main() {
         query_vocabulary.insert(query_words[i], DOC_QUERY);
     }
 
-    Vetor vector_query;
-    for(string word_query:query_words){
-        value = query_vocabulary.tf(word_query, DOC_QUERY)*query_vocabulary.idf(word_query);
-        vector_query.insert_coord(word_query,value);
-    }
+    // Vetor vector_query;
+    // for(string word_query:query_words){
+    //     value = query_vocabulary.tf(word_query, DOC_QUERY)*query_vocabulary.idf(word_query);
+    //     vector_query.insert_coord(word_query,value);
+    // }
 
     return 0;
 }

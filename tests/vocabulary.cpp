@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../include/doctest.h"
 
-#include "../src/Vocabulary.h"
+#include "../src/vocabulary.h"
 
 using namespace std;
 

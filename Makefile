@@ -1,7 +1,7 @@
 CXX		  := g++
 # CXX_FLAGS := -Wall -Wextra -std=c++14 -ggdb
 
-all: tests/bin/list_database tests/bin/multiset tests/bin/similarity tests/bin/vector tests/bin/vocabulary
+all: tests/bin/list_database tests/bin/vocabulary tests/bin/multiset tests/bin/vetor tests/bin/similarity
 
 clean:
 	rm -rf bin/* .vscode/ipch
@@ -17,19 +17,19 @@ clean:
 bin/list_database.o: src/list_database.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
+bin/word_treatment.o: src/word_treatment.cpp
+	$(CXX) $(CXX_FLAGS) -c $^ -o $@
+
 bin/multiset.o: src/multiset.cpp
-	$(CXX) $(CXX_FLAGS) -c $^ -o $@
-
-bin/similarity.o: src/similarity.cpp
-	$(CXX) $(CXX_FLAGS) -c $^ -o $@
-
-bin/vetor.o: src/vetor.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
 bin/vocabulary.o: src/vocabulary.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
-bin/word_treatment.o: src/word_treatment.cpp
+bin/vetor.o: src/vetor.cpp
+	$(CXX) $(CXX_FLAGS) -c $^ -o $@
+
+bin/similarity.o: src/similarity.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
 tests/bin/list_database: bin/list_database.o tests/list_database.cpp
