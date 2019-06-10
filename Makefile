@@ -38,7 +38,7 @@ tests/bin/list_database: bin/list_database.o tests/list_database.cpp
 tests/bin/multiset: bin/multiset.o tests/multiset.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
-tests/bin/similarity: bin/similarity.o tests/similarity.cpp
+tests/bin/similarity: bin/similarity.o tests/similarity.cpp bin/vetor.o
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
 tests/bin/vetor: bin/vetor.o tests/vetor.cpp
