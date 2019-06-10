@@ -2,15 +2,18 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <queue>
 
 #include "src/word_treatment.h"
 #include "src/vocabulary.h"
 #include "src/list_database.h"
-// #include "src/vetor.h"
+#include "src/vector.h"
+#include "src/ranking.h"
 
 #define DOC_QUERY ""
 
 using namespace std;
+
 
 int main() {
     vector <string> file_list = requestArchievs("database");
@@ -32,42 +35,49 @@ int main() {
         }
     }
 
-    // Vetor words_coord;
-    // map <string, Vetor> docs_weight;
-    // float value;
-    
-    // for(int i=0; i<file_list.size(); i++) {
-    //     ifstream file(file_list[i]);
-    //     if(file.is_open()) {
-    //         string word;
-    //         while(file >> word) {
-    //             treat(word);
-    //             value = vocabulary.tf(word,file_list[i])*vocabulary.idf(word);
-    //             words_coord.insert_coord(word, value);
-    //         }
-    //         docs_weight[file_list[i]]=words_coord;
-    //         file.close();
-    //     }
-    // }
+    vector <string> words_list = vocabulary.get_words();
 
-    string query;
-    cout << "O que deseja pesquisar?\n> ";
-    cin >> query;
-
-    vector <string> query_words = split(query, " ");
-
-    Vocabulary query_vocabulary(query_words.size());
-
-    for(int i=0; i<query_words.size(); i++) {
-        treat(query_words[i]);
-        query_vocabulary.insert(query_words[i], DOC_QUERY);
+    map <string, Vector> docs_coord;
+    for(auto &doc: file_list) {
+        Vector doc_vector;
+        for(auto &word: words_list) {
+            doc_vector.insert_coord(word, vocabulary.tf(word, doc) * vocabulary.idf(word));
+        }
+        docs_coord[doc] = doc_vector;
     }
 
-    // Vetor vector_query;
-    // for(string word_query:query_words){
-    //     value = query_vocabulary.tf(word_query, DOC_QUERY)*query_vocabulary.idf(word_query);
-    //     vector_query.insert_coord(word_query,value);
-    // }
+    while(1) {
+        string query;
+        cout << "O que deseja pesquisar?\n> ";
+        getline(cin, query);
+
+        vector <string> query_words = split(query, " ");
+
+        Vocabulary query_vocabulary(query_words.size());
+
+        for(int i=0; i<query_words.size(); i++) {
+            treat(query_words[i]);
+            query_vocabulary.insert(query_words[i], DOC_QUERY);
+        }
+
+        map <string, Vector> query_coord;
+        Vector query_vector;
+        for(auto &word: words_list) {
+            query_vector.insert_coord(word, query_vocabulary.tf(word, DOC_QUERY) * vocabulary.idf(word));
+        }
+
+        priority_queue <ranking_cell> ranking;
+        for(auto &doc: file_list) {
+            float similarity = docs_coord[doc].cos(query_vector);
+            if(similarity > 0) {
+                ranking.push(ranking_cell(doc, similarity));
+            }
+        }
+
+        // for(int i=0; i<ranking.size(); i++) {
+        //     cout << ranking.pop() << endl;
+        // }
+    }
 
     return 0;
 }

@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <cmath>
+#include <vector>
 
 #include "multiset.h"
 
@@ -26,6 +27,9 @@ class Vocabulary {
 
         // Remove palavra do vocabulario
         void remove(string word);
+
+        // Retorna vetor de palavras contidas no vocabulário
+        vector <string> get_words();
 
         // Calcula frequencia do termo no documento
         float tf(string word, string doc);

@@ -12,10 +12,11 @@ vector <string> requestArchievs(string path){
     while((lsdir = readdir(dir)) != NULL) {
         string curr_file = lsdir->d_name;
         if(curr_file != "." && curr_file != "..") {
+            curr_file = path + "/" + curr_file;
             if(lsdir->d_type == DT_REG){
                 files.push_back(curr_file);
             } else {
-                aux = requestArchievs(path + "/" + curr_file);
+                aux = requestArchievs(curr_file);
                 for(int i=0; i<aux.size(); i++){
                     files.push_back(aux[i]);
                 }

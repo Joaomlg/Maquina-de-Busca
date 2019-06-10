@@ -8,7 +8,7 @@ Vocabulary::Vocabulary (int ndoc) {
 
 bool Vocabulary::contains (string word){
     map<string, my_multiset<string>>::iterator it = dict.find(word);
-    if(it->first == word) return true;
+    if(it != dict.end()) return true;
     else return false;
 }
 
@@ -26,6 +26,14 @@ void Vocabulary::remove (string word) {
     map <string, my_multiset<std::string>> :: iterator it;
     it = dict.find(word);
     dict.erase(it);
+}
+
+vector <string> Vocabulary::get_words() {
+    vector <string> words;
+    for(auto &w: dict) {
+        words.push_back(w.first);
+    }
+    return words;
 }
 
 float Vocabulary::tf (string word, string doc){

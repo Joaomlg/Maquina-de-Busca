@@ -2,13 +2,13 @@
 
 #include "../include/doctest.h"
 
-#include "../src/vetor.h"
+#include "../src/vector.h"
 
 using namespace std;
 
-TEST_SUITE("Vetor") {
+TEST_SUITE("Vector") {
     TEST_CASE("module()") {
-        Vetor vet, vet2;
+        Vector vet, vet2;
         float mod1 = 0.6, mod2 = 1, mod3=7;
         vet.insert_coord("ola",0.4);
         vet.insert_coord("google", 0.2);
@@ -28,8 +28,8 @@ TEST_SUITE("Vetor") {
         CHECK(vet2.module()==mod3);
     }
 
-    TEST_CASE("operator*(Vetor x)"){
-        Vetor vetA, vetB;
+    TEST_CASE("operator*(Vector x)"){
+        Vector vetA, vetB;
         float result, expected=0.28, histerese=0.0001;
 
         vetA.insert_coord("ola",0.6);

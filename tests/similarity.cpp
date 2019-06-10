@@ -6,8 +6,8 @@
 
 using namespace std;
 
-TEST_CASE("similiaridade(Vetor doc, Vetor query)") {
-    Vetor doc, query;
+TEST_CASE("similiaridade(Vector doc, Vector query)") {
+    Vector doc, query;
     float sim, expected=0.571428571;
 
     doc.insert_coord("ola",  4);

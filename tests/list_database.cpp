@@ -6,19 +6,18 @@
 
 TEST_CASE("requestArchievs()") {
     string pasta = "tests/database";
-    vector <string> expected = {"baseTeste1.txt", "baseTeste2.txt", "baseTeste3.txt"};
-    int checar=0;
+    vector <string> expected = {
+        "tests/database/Subdatabase/doc3.txt", 
+        "tests/database/Subdatabase/doc2.txt", 
+        "tests/database/Subdatabase/dir/doc4.txt",
+        "tests/database/doc1.txt"
+    };
+
     vector <string> received = requestArchievs(pasta);
     
-    for(int i=0; i<expected.size(); i++){
-        for(int j=0; j<received.size(); j++){
-            if(expected[i]==received[j]){
-                std::cerr << received[j] << std::endl;
-                CHECK(expected[i]==received[j]);
-                checar++;
-            }
-        }    
+    REQUIRE(received.size() == expected.size());
+
+    for(int i=0, j=0; i<expected.size(); i++, j++){
+        CHECK(received[i] == expected[j]);
     }
-    
-    CHECK(checar==expected.size());
 }
