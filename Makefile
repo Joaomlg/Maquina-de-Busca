@@ -1,7 +1,7 @@
 CXX		  := g++
 # CXX_FLAGS := -Wall -Wextra -std=c++14 -ggdb
 
-all: tests/bin/list_database tests/bin/multiset tests/bin/vetor tests/bin/vocabulary tests/bin/similarity 
+all: tests/bin/list_database tests/bin/multiset tests/bin/vector tests/bin/vocabulary tests/bin/similarity 
 
 clean:
 	rm -rf bin/* .vscode/ipch
@@ -26,7 +26,7 @@ bin/multiset.o: src/multiset.cpp
 bin/vocabulary.o: src/vocabulary.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
-bin/vetor.o: src/vetor.cpp
+bin/vector.o: src/vector.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
 bin/similarity.o: src/similarity.cpp
@@ -41,7 +41,7 @@ tests/bin/multiset: bin/multiset.o tests/multiset.cpp
 tests/bin/similarity: bin/similarity.o tests/similarity.cpp bin/vetor.o
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
-tests/bin/vetor: bin/vetor.o tests/vetor.cpp
+tests/bin/vetor: bin/vector.o tests/vector.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
 tests/bin/vocabulary: bin/vocabulary.o tests/vocabulary.cpp
