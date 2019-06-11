@@ -18,8 +18,11 @@ class ranking_cell {
         // Compara valores, verifica se é menor
         bool operator<(const ranking_cell& other) const;
 
+        // Retorna a key
+        string chave() const;
+
         // Printa chave do ranking na tela
-        friend ostream& operator<<(ostream& os, const ranking_cell& ct);
+        //friend ostream& operator<<(ostream& os, const ranking_cell& ct);
 };
 
 #endif

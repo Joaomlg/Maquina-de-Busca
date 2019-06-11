@@ -14,6 +14,17 @@
 
 using namespace std;
 
+std::ostream& operator<< (std::ostream& os, const priority_queue<ranking_cell>& ct) {
+  priority_queue <ranking_cell> x(ct);
+  string chave;
+  for(int i=0; i<x.size(); i++) {
+    chave = x.top().chave();
+    //std::cerr << chave << endl;
+    os << chave << endl;
+    x.pop();
+  }
+  return os;
+}
 
 int main() {
     vector <string> file_list = requestArchievs("database");
@@ -74,9 +85,11 @@ int main() {
             }
         }
 
-        // for(int i=0; i<ranking.size(); i++) {
-        //     cout << ranking.pop() << endl;
-        // }
+        cout << ranking << endl;
+
+        //for(int i=0; i<ranking.size(); i++) {
+        //    cout << ranking.pop() << endl;
+        //}
     }
 
     return 0;
