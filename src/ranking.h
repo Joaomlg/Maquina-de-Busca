@@ -22,7 +22,7 @@ class ranking_cell {
         string chave() const;
 
         // Printa chave do ranking na tela
-        //friend ostream& operator<<(ostream& os, const ranking_cell& ct);
+        friend ostream& operator<<(ostream& os, const ranking_cell& ct);
 };
 
 #endif

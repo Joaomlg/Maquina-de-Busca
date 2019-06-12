@@ -15,7 +15,7 @@ string ranking_cell::chave() const{
   return this->key;
 }
 
-//ostream& operator<<(ostream& os, const ranking_cell& ct) {
-//    os << ct.key;
-//    return os;
-//}
+ostream& operator<<(ostream& os, const ranking_cell& ct) {
+  os << ct.key;
+  return os;
+}

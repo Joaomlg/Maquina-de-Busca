@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <queue>
+#include <list>
 
 #include "src/word_treatment.h"
 #include "src/vocabulary.h"
@@ -13,18 +13,6 @@
 #define DOC_QUERY ""
 
 using namespace std;
-
-std::ostream& operator<< (std::ostream& os, const priority_queue<ranking_cell>& ct) {
-  priority_queue <ranking_cell> x(ct);
-  string chave;
-  for(int i=0; i<x.size(); i++) {
-    chave = x.top().chave();
-    //std::cerr << chave << endl;
-    os << chave << endl;
-    x.pop();
-  }
-  return os;
-}
 
 int main() {
     vector <string> file_list = requestArchievs("database");
@@ -59,7 +47,7 @@ int main() {
 
     while(1) {
         string query;
-        cout << "O que deseja pesquisar?\n> ";
+        cout << endl << "O que deseja pesquisar?\n> ";
         getline(cin, query);
 
         vector <string> query_words = split(query, " ");
@@ -77,19 +65,21 @@ int main() {
             query_vector.insert_coord(word, query_vocabulary.tf(word, DOC_QUERY) * vocabulary.idf(word));
         }
 
-        priority_queue <ranking_cell> ranking;
+        list <ranking_cell> ranking;
         for(auto &doc: file_list) {
             float similarity = docs_coord[doc].cos(query_vector);
             if(similarity > 0) {
-                ranking.push(ranking_cell(doc, similarity));
+                ranking.push_back(ranking_cell(doc, similarity));
             }
         }
+        ranking.sort();
 
-        cout << ranking << endl;
-
-        //for(int i=0; i<ranking.size(); i++) {
-        //    cout << ranking.pop() << endl;
-        //}
+        if(ranking.size()) {
+            cout << "Arquivos relacionados a sua pesquisa:" << endl;
+            for(auto it=ranking.rbegin(); it!=ranking.rend(); it++) {
+            cout << *it << endl;
+            }
+        }
     }
 
     return 0;
