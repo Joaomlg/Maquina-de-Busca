@@ -16,7 +16,6 @@ using namespace std;
 
 int main() {
     
-    system("color 04");
     cout << "DOWNLOADING CONTENT..." << endl;
     cout << "                           " << endl;
     cout << "             ####          " << endl;
@@ -44,7 +43,6 @@ int main() {
             file.close();
         } else {
             cerr << "Erro ao tentar abrir arquivo: " << file_list[i] << endl;
-            //exit(1);
         }
     }
 
@@ -59,13 +57,11 @@ int main() {
         docs_coord[doc] = doc_vector;
     }
 
-    system("cls");
-    system("color 07");
-
     while(1) {
         string query;
         cout << endl << "O que deseja pesquisar?\n> ";
-        cin >> query;
+        getline(cin,query);
+        cout << "BUSCANDO..." << endl;
 
         vector <string> query_words = split(query, " ");
 
@@ -91,23 +87,26 @@ int main() {
         }
         ranking.sort();
 
+        cout << "Encontramos " << ranking.size() << " resultados para sua busca." << endl;
+
         if(ranking.size()) {
             cout << "Arquivos relacionados a sua pesquisa:" << endl;
             for(auto it=ranking.rbegin(); it!=ranking.rend(); it++) {
             cout << *it << endl;
             }
-        } else {
-            cout << "Nao ha resultados para sua busca." << endl;
         }
 
+        cout << "Para sair, basta apertar ctrl+c." << endl;
+
+        /* 
         string continuar;
         do{
             cout << "Deseja realizar mais uma busca?(s/n)"<< endl << "> ";
             cin >> continuar;
         } while(continuar != "n" && continuar !="s");
         if (continuar=="n")
-            exit(1);
-        system("cls");
+            break;
+        */
     }
 
     return 0;
