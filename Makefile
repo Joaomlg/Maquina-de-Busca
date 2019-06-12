@@ -1,7 +1,7 @@
 CXX		  := g++
 # CXX_FLAGS := -Wall -Wextra -std=c++14 -ggdb
 
-all: tests/bin/list_database tests/bin/multiset tests/bin/vector tests/bin/vocabulary tests/bin/similarity 
+all: tests/bin/list_database tests/bin/multiset tests/bin/vector tests/bin/vocabulary main # tests/bin/ranking
 
 clean:
 	rm -rf bin/* .vscode/ipch
@@ -29,7 +29,7 @@ bin/vocabulary.o: src/vocabulary.cpp
 bin/vector.o: src/vector.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
-bin/similarity.o: src/similarity.cpp
+bin/ranking.o: src/ranking.cpp
 	$(CXX) $(CXX_FLAGS) -c $^ -o $@
 
 tests/bin/list_database: bin/list_database.o tests/list_database.cpp
@@ -38,14 +38,17 @@ tests/bin/list_database: bin/list_database.o tests/list_database.cpp
 tests/bin/multiset: bin/multiset.o tests/multiset.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
-tests/bin/similarity: bin/similarity.o tests/similarity.cpp bin/vetor.o
-	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
+# tests/bin/ranking: bin/ranking.o tests/ranking.cpp
+# 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
-tests/bin/vetor: bin/vector.o tests/vector.cpp
+tests/bin/vector: bin/vector.o tests/vector.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
 tests/bin/vocabulary: bin/vocabulary.o tests/vocabulary.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
 tests/bin/word_treatment: bin/word_treatment.o tests/word_treatment.cpp
+	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
+
+main: bin/list_database.o bin/word_treatment.o bin/multiset.o bin/vocabulary.o bin/ranking.o bin/vector.o main.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@

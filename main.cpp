@@ -15,24 +15,14 @@
 using namespace std;
 
 int main() {
-    
-    cout << "DOWNLOADING CONTENT..." << endl;
-    cout << "                           " << endl;
-    cout << "             ####          " << endl;
-    cout << "             ####          " << endl;
-    cout << "             ####          " << endl;
-    cout << "           __####__        " << endl;
-    cout << "           \\\\    //        " << endl;
-    cout << "            \\\\  //         " << endl;
-    cout << "             \\\\//          " << endl;
-    cout << "       ##            ##    " << endl;
-    cout << "       ################    " << endl;
+    cout << "Iniciando maquina de busca..." << endl;
 
     vector <string> file_list = requestArchievs("database");
 
     Vocabulary vocabulary(file_list.size());
 
     for(int i=0; i<file_list.size(); i++) {
+        cout << "\rLendo arquivos: " << i+1 << "/" << file_list.size();
         ifstream file(file_list[i]);
         if(file.is_open()) {
             string word;
@@ -45,17 +35,23 @@ int main() {
             cerr << "Erro ao tentar abrir arquivo: " << file_list[i] << endl;
         }
     }
+    cout << endl;
 
     vector <string> words_list = vocabulary.get_words();
+    cout << words_list.size() << endl;
 
+    cout << "Configurações finais..." << endl;
     map <string, Vector> docs_coord;
-    for(auto &doc: file_list) {
+    for(int i=0; i<file_list.size(); i++) {
+        cerr << "\rProcesso: " << (i+1)*100/file_list.size() << "%";
+        string doc = file_list[i];
         Vector doc_vector;
         for(auto &word: words_list) {
             doc_vector.insert_coord(word, vocabulary.tf(word, doc) * vocabulary.idf(word));
         }
         docs_coord[doc] = doc_vector;
     }
+    cout << endl;
 
     while(1) {
         string query;
