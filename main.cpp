@@ -40,7 +40,7 @@ int main() {
     vector <string> words_list = vocabulary.get_words();
     cout << words_list.size() << endl;
 
-    cout << "Configurações finais..." << endl;
+    cout << "Configuracoes finais..." << endl;
     map <string, Vector> docs_coord;
     for(int i=0; i<file_list.size(); i++) {
         cerr << "\rProcesso: " << (i+1)*100/file_list.size() << "%";
