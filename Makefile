@@ -1,7 +1,7 @@
 CXX		  := g++
 # CXX_FLAGS := -Wall -Wextra -std=c++14 -ggdb
 
-all: tests/bin/list_database tests/bin/word_treatment tests/bin/multiset tests/bin/vector tests/bin/vocabulary main # tests/bin/ranking
+all: tests/bin/list_database tests/bin/word_treatment tests/bin/multiset tests/bin/vector tests/bin/vocabulary maquina_de_busca # tests/bin/ranking
 
 clean:
 	rm -rf bin/* .vscode/ipch
@@ -50,5 +50,5 @@ tests/bin/vocabulary: bin/vocabulary.o tests/vocabulary.cpp
 tests/bin/word_treatment: bin/word_treatment.o tests/word_treatment.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
 
-main: bin/list_database.o bin/word_treatment.o bin/multiset.o bin/vocabulary.o bin/ranking.o bin/vector.o main.cpp
+maquina_de_busca: bin/list_database.o bin/word_treatment.o bin/multiset.o bin/vocabulary.o bin/ranking.o bin/vector.o main.cpp
 	$(CXX) $(CXX_FLAGS) -I include/ $^ -o $@
