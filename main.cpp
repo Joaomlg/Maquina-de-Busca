@@ -42,7 +42,7 @@ int main() {
     cout << "Configuracoes finais..." << endl;
     map <string, Vector> docs_coord;
     for(int i=0; i<file_list.size(); i++) {
-        cerr << "\rProcesso: " << (i+1)*100/file_list.size() << "%";
+        cerr << "\rProcessando: " << (i+1)*100/file_list.size() << "%";
         string doc = file_list[i];
         Vector doc_vector;
         for(auto &word: words_list) {
@@ -53,10 +53,12 @@ int main() {
     cout << endl;
 
     while(1) {
+        setbuf(stdin, NULL);
+
         string query;
         cout << endl << "O que deseja pesquisar?\n> ";
-        getline(cin,query);
-        cout << "BUSCANDO..." << endl;
+        getline(cin, query);
+        cout << endl << "Buscando...\n" << endl;
 
         vector <string> query_words = split(query, " ");
 
@@ -82,26 +84,15 @@ int main() {
         }
         ranking.sort();
 
-        cout << "Encontramos " << ranking.size() << " resultados para sua busca." << endl;
+        cout << "Encontramos " << ranking.size() << " resultados para a sua busca!" << endl;
 
         if(ranking.size()) {
             cout << "Arquivos relacionados a sua pesquisa:" << endl;
             for(auto it=ranking.rbegin(); it!=ranking.rend(); it++) {
-            cout << *it << endl;
+            cout << '\t' << *it << endl;
             }
         }
-
-        cout << "Para sair, basta apertar ctrl+c." << endl;
-
-        /* 
-        string continuar;
-        do{
-            cout << "Deseja realizar mais uma busca?(s/n)"<< endl << "> ";
-            cin >> continuar;
-        } while(continuar != "n" && continuar !="s");
-        if (continuar=="n")
-            break;
-        */
+        cout << endl;
     }
 
     return 0;
