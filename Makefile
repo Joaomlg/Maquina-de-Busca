@@ -1,7 +1,7 @@
 CXX		  := g++
 # CXX_FLAGS := -Wall -Wextra -std=c++14 -ggdb
 
-all: tests/bin/list_database tests/bin/multiset tests/bin/vector tests/bin/vocabulary main # tests/bin/ranking
+all: tests/bin/list_database tests/bin/word_treatment tests/bin/multiset tests/bin/vector tests/bin/vocabulary main # tests/bin/ranking
 
 clean:
 	rm -rf bin/* .vscode/ipch
