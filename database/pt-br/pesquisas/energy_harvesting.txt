@@ -1,0 +1,11 @@
+Este trabalho visa fazer um estudo de autonomia energetica de tres tipos de dispositivos com comunicação sem fio: 
+sensor de presenca, sensor de aberturas e interface teclado. Foram realizados estudos e levantamentos dos componentes 
+mais adequados a esses dispositivos como transdutores de energia, microcontroladores, transceptores, detectores de 
+presenca, conversores DC-DC e armazenadores de energia. Os principais criterios comparados foram o baixo consumo de 
+energia, adequacao a ambientes residenciais e aos possiveis produtos finais, eficiencia na producao de energia e faixas 
+de trabalho de tensoes e correntes. Concluiu-se que as celulas solares de silicio cristalino caracterizam-se como os 
+transdutores mais viaveis. Para o calculo de autonomia, foram feitas estimativas do ciclo de trabalho de cada um dos 
+componentes, considerando uma aplicação em automacao residencial, em que foram verificados os principais requisitos 
+teoricos para o projeto dos dispositivos autonomos, i.e. que nao precisam de substituicao de baterias ou pilhas. 
+Verificou-se que, para o sensor de aberturas e a interface teclado, idealizados no projeto inicial, mais pesquisas 
+precisam ser realizadas a fim de viabilizar a adequação de outras formas de transdução de energia em ambiente residencial. 
